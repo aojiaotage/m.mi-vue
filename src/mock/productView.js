@@ -43,7 +43,7 @@ let productView = Mock.mock({
     "default_goods_id": "2181500027",
     "goods_info|20": [
       {
-        "action_button": {
+        "action_button": { // 商品购买、预约
           "button_title": "加入购物车",
           "is_bigtap": false,
           "occ_timeout": 5000,

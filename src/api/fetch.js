@@ -1,19 +1,36 @@
 import axios from 'axios'
 import url from './index.js'
+import mock from '../mock/index.js'
 
-function fetch (api, data) {
+function decoPath (path, opts) {
+  let p = path
+  if (opts && opts.params) {
+    for (let k of Object.keys(opts.params)) {
+      p = path.replace(`/:${k}`, `/${opts.params[k]}`)
+    }
+  }
+  return p
+}
+
+function fetch (api, data, opts) {
   return new Promise((resolve, reject) => {
-    axios.post(url[api], data).then(res => {
-      resolve(res.data)
-    }).catch(err => {
-      if (process.env.NODE_ENV === 'production') {
-        reject(err)
-      } else {
-        console.error(err)
-        let mock = require('../mock/index.js')
-        resolve(mock[api])
-      }
-    })
+    const apiObj = url[api]
+    if (apiObj && apiObj.implemented) {
+      const path = decoPath(apiObj.path, opts)
+      axios[apiObj.method](path, data).then(res => {
+        resolve(res.data)
+      }).catch(err => {
+        if (process.env.NODE_ENV === 'production') {
+          reject(err)
+        } else {
+          console.error(err)
+          let mock = require('../mock/index.js')
+          resolve(mock[api])
+        }
+      })
+    } else {
+      resolve(mock[api])
+    }
   })
 }
 

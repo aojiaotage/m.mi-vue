@@ -79,6 +79,7 @@ export default {
     setLists (res) {
       this.$store.commit('setViewLoading', false)
       this.$NProgress.done()
+      console.log(res.data)
       this.lists = res.data
     },
     remove (list, index) {
@@ -90,9 +91,7 @@ export default {
       Dialog.confirm({
         message: '确定删除当前地址?'
       }).then(() => {
-        fetch('addressDel', {
-          address_id: list.address_id
-        }).then(res => {
+        Address.remove(list.address_id).then(res => {
           this.lists.splice(index, 1)
         })
       })

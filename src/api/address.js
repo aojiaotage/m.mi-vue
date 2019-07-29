@@ -9,19 +9,27 @@ class Address {
     return fetch('addressAdd', data)
   }
 
-  static save (data) {
-    return fetch('addressSave', data)
+  static save (data, opts) {
+    return fetch('addressSave', data, opts)
   }
 
   static view (id) {
     return fetch('addressView', {
       address_id: id
+    }, {
+      params: {
+        id
+      }
     })
   }
 
-  static romve (id) {
+  static remove (id) {
     return fetch('addressDel', {
       address_id: id
+    }, {
+      params: {
+        id
+      }
     })
   }
 

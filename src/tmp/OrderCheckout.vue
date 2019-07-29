@@ -180,7 +180,7 @@
                   <strong>0.00</strong>
                 </div>
               </div>
-            </div>  
+            </div>
           </div>
           <div class="ui-line"></div>
           <div class="b5">

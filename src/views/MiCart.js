@@ -57,15 +57,16 @@ export default {
     }),
     getCartList () {
       this.$fetch('cartIndex').then(res => {
+        console.log(res)
         this.setCartList(res)
       })
     },
     setCartList (res) {
       this.$NProgress.done()
       this.$store.commit('setViewLoading', false)
-      // this.cartList = res.data.items
-      // let items = cartIndex.data.items
-      let items = JSON.parse(JSON.stringify(cartIndex)).data.items
+      this.cartList = res.data.items
+      let items = this.cartList
+      // let items = JSON.parse(JSON.stringify(cartIndex)).data.items
       let serviceSelect = []
       items.forEach(item => {
         if (item.service_info) {
@@ -177,12 +178,20 @@ export default {
     cartEdit (item, num) {
       if (num < 0 && item.num === 1) return
       // eslint-disable-next-line
-      if (num > 0 && item.num == item.buy_limit) return
-      let consumption = num > 0 ? 2 : 1
-      this.$fetch('cartEdit', {
-        goodsId: item.goodsId,
-        consumption
-      }).then(res => {
+      if (num > 0 && item.num === item.buy_limit) return
+      // let consumption = num > 0 ? 2 : 1
+      item.num += num
+      this.$fetch('cartEdit',
+        {
+          goodsId: item.goodsId,
+          item,
+        },
+        {
+          params: {
+            id: item.id,
+          }
+        },
+      ).then(res => {
         item.num += num
         this.cartList.forEach(list => {
           if (list.parent_goodsId === item.goodsId) {
@@ -273,6 +282,10 @@ export default {
     cartDelete (item, index) {
       this.$fetch('cartDelete', {
         goodsId: item.goodsId
+      },{
+        params: {
+          id: item.id,
+        }
       }).then(res => {
         this.cartList.splice(index, 1)
         if (item.parent_goodsId) {

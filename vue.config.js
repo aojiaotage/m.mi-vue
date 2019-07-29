@@ -13,14 +13,14 @@ module.exports = {
       // }
     }
   },
-  // devServer: {
-  //   proxy: {
-  //     '/': {
-  //       target: 'http://10.10.100.191:8080',
-  //       changeOrigin: true
-  //     }
-  //   }
-  // },
+  devServer: {
+    proxy: {
+      '/api/v1': {
+        target: 'http://localhost:7001',
+        changeOrigin: true
+      }
+    }
+  },
   configureWebpack: config => {
     if (process.env.NODE_ENV === 'production') {
       return {
@@ -30,7 +30,7 @@ module.exports = {
               vue: {
                 test (chunks) {
                   return chunks.resource && chunks.resource.includes('node_modules') && chunks.resource.includes('vue')
-                }, 
+                },
                 chunks: 'initial',
                 name: 'vue',
                 priority: 10

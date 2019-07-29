@@ -177,7 +177,9 @@ export default {
 
       this.addressInfo.is_default = this.addressInfo.is_default ? 1 : 2
       let api = this.$route.query.address_id ? 'save' : 'add'
-      Address[api](this.addressInfo).then(res => {
+      const opts = {}
+      if (this.$route.query.address_id) opts.params = {id: this.$route.query.address_id}
+      Address[api](this.addressInfo, opts).then(res => {
         if (this.$route.query.type === 'checkout') {
           //  调用接口/address/cartDelivery
           this.$router.go(-1)

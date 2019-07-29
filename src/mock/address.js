@@ -47,7 +47,7 @@ let addressSave = Mock.mock({
 
 let addressView = Mock.mock({
   "code": 0,
-  "data": {
+  "data": { 
     "address_id": "@id",
     "consignee": "tony",
     "address": "华发国际花园",
