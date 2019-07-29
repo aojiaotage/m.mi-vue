@@ -10,7 +10,7 @@ import { addressList, addressAdd, addressSave, addressView, addressDel, addressR
 import addressAll from './addressAll.js'
 import { orderCheckout, orderList, orderView } from './order'
 
-export default {
+export {
   login,
   userInfo,
   logout,
