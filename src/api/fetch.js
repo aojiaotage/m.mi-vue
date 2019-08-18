@@ -1,6 +1,6 @@
 import axios from 'axios'
 import url from './index.js'
-import mock from '../mock/index.js'
+import * as mock from '../mock/index.js'
 
 function decoPath (path, opts) {
   let p = path
@@ -24,7 +24,6 @@ function fetch (api, data, opts) {
           reject(err)
         } else {
           console.error(err)
-          let mock = require('../mock/index.js')
           resolve(mock[api])
         }
       })

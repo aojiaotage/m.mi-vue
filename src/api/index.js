@@ -31,11 +31,31 @@ const url = {
     path: apiPrefix + '/site/nav',
     implemented: true,
   },
-  // homePage: '/home/homePage',
-  // category: '/home/category',
-  // commodity: '/home/commodityList',
-  // forRecommend: '/home/forRecommend',
-  // productView: '/product/productView',
+  homePage: {
+    method: 'get',
+    path: apiPrefix + '/site/home',
+    implemented: true,
+  },
+  category: {
+    method: 'get',
+    path: apiPrefix + '/site/category',
+    implemented: true,
+  },
+  // commodity: {
+  //   method: 'get',
+  //   path: apiPrefix + '/site/category',
+  //   implemented: true,
+  // },
+  forRecommend: {
+    method: 'get',
+    path: apiPrefix + '/site/forRecommend',
+    implemented: true,
+  },
+  productView: {
+    method: 'get',
+    path: apiPrefix + '/site/product/:id',
+    implemented: true,
+  },
   // recommend: '/product/recommend',
   // estDelivery: '/product/estDelivery',
   cartIndex: {

@@ -49,6 +49,10 @@ export default {
     if (from.name) {
       fetch('productView', {
         commodity_id: to.params.id
+      }, {
+        params: {
+          id: to.params.id
+        }
       }).then(res => {
         next(vm => vm.setProductData(res, to.params.id))
       })
@@ -104,6 +108,10 @@ export default {
     getProductData () {
       this.$fetch('productView', {
         commodity_id: this.$route.params.id
+      },{
+        params: {
+          id: this.$route.params.id
+        }
       }).then(res => {
         this.setProductData(res, this.$route.params.id)
       })
@@ -113,6 +121,7 @@ export default {
       this.$store.commit('setViewLoading', false)
       this.id = id
       let data = res.data
+      console.log(data)
       let viewContent = data.view_content
       let descTabsView = viewContent.descTabsView.descTabsView
       descTabsView.forEach(item => {
