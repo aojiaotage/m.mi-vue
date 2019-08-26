@@ -19,7 +19,7 @@
                     @click="cartSelect(item, index)">
                     <i v-if="!item.parent_goodsId" class="iconfont" :class="item.sel_status?'icon-roundcheckfill':'icon-round'"></i>
                   </div>
-                  <router-link :to="{name: 'detail', params: {id: item.goodsId}}" class="imgProduct flex">
+                  <router-link :to="{name: 'detail', params: {id: item.product_id}}" class="imgProduct flex">
                     <img v-lazy="item.image_url">
                   </router-link>
                   <div class="info flex">

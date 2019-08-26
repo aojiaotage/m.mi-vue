@@ -92,6 +92,7 @@ export default {
         items.splice(index + 1, 0, {
           buy_limit: items[index].num,
           goodsId: info.service_goods_id,
+          productId: info.product_id,
           image_url: info.service_image_url,
           num: info.num,
           price: info.service_price,
@@ -120,6 +121,7 @@ export default {
         items.splice(index + 1, 0, {
           buy_limit: items[index].num,
           goodsId: gift.actId,
+          productId: gift.product_id,
           image_url: gift.image_url,
           num: items[index].num,
           product_name: gift.product_name,
@@ -266,6 +268,7 @@ export default {
             this.cartList.splice(index + 1, 0, {
               buy_limit: cashItem.num,
               goodsId: list.service_goods_id,
+              productId: list.product_id,
               image_url: list.service_image_url,
               num: list.num,
               price: list.service_price,
