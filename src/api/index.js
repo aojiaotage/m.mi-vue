@@ -56,8 +56,16 @@ const url = {
     path: apiPrefix + '/site/product/:id',
     implemented: true,
   },
-  // recommend: '/product/recommend',
-  // estDelivery: '/product/estDelivery',
+  recommend: {
+    method: 'get',
+    path: apiPrefix + '/site/recommend',
+    implemented: true,
+  },
+  estDelivery: {
+    method: 'get',
+    path: apiPrefix + '/site/estDelivery',
+    implemented: true,
+  },
   cartIndex: {
     method: 'get',
     path: apiPrefix + '/cart',
@@ -69,11 +77,11 @@ const url = {
     path: apiPrefix + '/cart/item/:id',
     implemented: true,
   },
-  // cartAdd: {
-  //   method: 'get',
-  //   path: apiPrefix + '/cart/item/:id',
-  //   implemented: true,
-  // },
+  cartAdd: {
+    method: 'post',
+    path: apiPrefix + '/cart/item',
+    implemented: true,
+  },
   cartDelete: {
     method: 'delete',
     path: apiPrefix + '/cart/item/:id',
