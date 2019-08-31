@@ -10,7 +10,11 @@ class Order {
   }
 
   static view (data) {
-    return fetch('orderView', data)
+    return fetch('orderView', data, {
+      params: {
+        id: data.id,
+      },
+    })
   }
 }
 
